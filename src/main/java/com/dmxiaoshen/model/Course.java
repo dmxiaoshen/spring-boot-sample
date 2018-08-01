@@ -4,9 +4,6 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
-/**
- * Created by hzhsg on 2018/7/24.
- */
 @Data
 public class Course {
 

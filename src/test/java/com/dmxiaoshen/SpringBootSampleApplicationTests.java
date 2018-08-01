@@ -12,7 +12,9 @@ import org.mockito.stubbing.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
@@ -20,12 +22,15 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringBootSampleApplication.class)
+@ContextConfiguration(classes = RedisServerTestConfiguration.class)
 public class SpringBootSampleApplicationTests {
 
 	@Autowired
 	private UserService userService;
 	@MockBean
 	private CourseService courseService;
+	@Autowired
+	private RedisTemplate<String,String> redisTemplate;
 
 	@Test
 	public void testAddUser(){
@@ -66,6 +71,8 @@ public class SpringBootSampleApplicationTests {
 		User u = userService.getUser("666");
 		Course c = courseService.getCourseByStudentId(u.getId());
 		System.out.println(c);
+		redisTemplate.opsForValue().set("124","fkcrrr");
+		System.out.println(redisTemplate.opsForValue().get("124"));
 	}
 
 }

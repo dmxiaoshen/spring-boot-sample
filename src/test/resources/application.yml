@@ -4,6 +4,9 @@ spring:
     username:
     password:
     driver-class-name: org.h2.Driver
+  redis:
+    port: 6879
+    embedded: true
 
 mybatis:
   mapper-locations: classpath:/mappers/*Dao.xml
