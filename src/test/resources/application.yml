@@ -14,3 +14,10 @@ mybatis:
 pagehelper:
   reasonable: true
   helper-dialect: mysql
+
+sample:
+  conf:
+    enabled: true
+    appId: ids333
+    appKey: keys333
+
